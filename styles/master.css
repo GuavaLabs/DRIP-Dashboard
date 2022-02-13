@@ -4,3 +4,26 @@
   grid-template-columns: auto;
   grid-template-rows: auto;
 }
+
+
+.price-box{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  border: 1px solid black;
+}
+
+.token-name{
+  color: #53B9EA;
+}
+
+.token-percent{
+  margin: 0px;
+  color: lightgreen;
+}
+
+.box-row{
+  display: flex;
+  flex-direction: row;
+}

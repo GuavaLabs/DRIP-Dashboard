@@ -1,63 +1,21 @@
 import Link from 'next/link'
-//import { got } from 'got';
 import { useEffect, useState } from "react";
-//import styles from '../styles/Home.module.css'
 const axios = require('axios').default;
+//import {PrismaClient} from "@prisma/client";
+//const prisma = newPrismaClient();
 
-import Prices from '../components/prices'
-
-// async function getData(request){
-//   try{
-//     const response = await axios.get(request);
-//     return response.data
-//   }catch(error){
-//     console.log(error)
-//   }
-// }
-
-// const [prices, setPrices] = useState([]);
-//
-// const api_request = 'https://api.coingecko.com/api/v3/simple/price?ids=drip-network%2Cpig-finance%2Cdoggy-swap%2Crevolution%2Cgrimtoken&vs_currencies=usd'
-//
-//
-// fetchData();
-
-
-
+// Components
+import Price from "../components/prices"
 
 function Home() {
-
-  const [pricelist, addPrices]  = useState('')
-
-  const api_request = 'https://api.coingecko.com/api/v3/simple/price?ids=drip-network%2Cpig-finance%2Cdoggy-swap%2Crevolution%2Cgrimtoken&vs_currencies=usd'
-
-  // async function fetchData(){
-  //   const response = await axios.get(api_request).then((res)  =>{
-  //     return res.data
-  //   });
-  //   console.log(response)
-  //   addPrices(response);
-  // }
-
-  useEffect(() => {
-    console.log("test");
-    getData();
-    console.log("test");
-  }, [])
-
-  const getData = () => {
-    axios.get('https://api.coingecko.com/api/v3/simple/price?ids=drip-network%2Cpig-finance%2Cdoggy-swap%2Crevolution%2Cgrimtoken&vs_currencies=usd').then((res) =>{
-      const allprices = res.data;
-      addPrices(allprices);
-    }).catch(error => console.error(error));
-  };
 
   return (
     <div  className="maincontainer">
       {/* Header */}
-      <header className="">
-        <h1>Test</h1>
-        <Prices props={pricelist} />
+      <header className="box-row">
+        <Price tokenName={'DRIP'} tokenIcon={'/drip_logo.svg'} tokenPrice={'129.00'}/>
+        <Price tokenName={'BR34P'} tokenIcon={'/drip_logo.svg'} tokenPrice={'0.00'}/>
+        <Price tokenName={'RAKE'} tokenIcon={'/drip_logo.svg'} tokenPrice={'14.88'}/>
       </header>
       {/* Section 1 - Prices */}
       <section  className="">
@@ -94,5 +52,12 @@ function Home() {
     </div>
   )
 }
-
 export default Home
+
+// export async function getServerSideProps(){
+//   const allprices = await prisma.token_info.findMany();
+//
+//   return {
+//     props: allprices
+//   };
+// }
