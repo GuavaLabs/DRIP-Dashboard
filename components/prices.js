@@ -1,21 +1,23 @@
 import Image from 'next/image'
 
-export default function Prices({tokenName, tokenIcon, tokenPrice}){
+export default function Prices({token_info}){
   return(
     <>
       <div  className='price-box'>
-        <div  classname='box-row'>
-          <h2 className='token-name'>${tokenName}</h2>
+        <div  className='box-row'>
+          <h2 className='token-name'>${token_info.name}</h2>
         </div>
         <div  className='box-row'>
           <div>
-            <Image src={tokenIcon} width={19} height={23} alt="Token Icon" />
+            {/* LOGO should be changed based on name*/}
+            <Image src={'/drip_logo.svg'} width={19} height={23} alt="Token Icon" />
           </div>
-          {/* Percentage Goes Here*/}
-          <h3 className='token-percent'>+0.1%</h3>
+          {token_info.price_change > 0 ? (<h3 className='token-percent'>{token_info.price_change}%</h3>) : (
+            <h3 className='token-percent negative'>{token_info.price_change}%</h3>
+          )}
         </div>
-        <div  classname='box-row'>
-          <h2>${tokenPrice}</h2>
+        <div  className='box-row token-price'>
+          <h2>${token_info.price}</h2>
         </div>
       </div>
     </>

@@ -7,18 +7,20 @@ const axios = require('axios').default;
 // Components
 import Price from "../components/prices"
 
-function Home() {
+function Home({price_data}) {
 
   return (
-    <div  className="maincontainer">
-      {/* Header */}
-      <header className="box-row">
-        <Price tokenName={'DRIP'} tokenIcon={'/drip_logo.svg'} tokenPrice={'129.00'}/>
-        <Price tokenName={'BR34P'} tokenIcon={'/drip_logo.svg'} tokenPrice={'0.00'}/>
-        <Price tokenName={'RAKE'} tokenIcon={'/drip_logo.svg'} tokenPrice={'14.88'}/>
-      </header>
+    <div  className="main-container">
+      {/* Header is in _app.js*/}
+
       {/* Section 1 - Prices */}
-      <section  className="">
+      <section  className="box-column">
+        <div  className="header-h1">
+          <h1>Token Prices</h1>
+        </div>
+        <div  className="box-row">
+          {price_data.map(token_info => (<Price token_info={token_info} />))}
+        </div>
       </section>
       {/* Section 2 -  DAO Member Breakdown */}
       <section  className="">
@@ -54,10 +56,24 @@ function Home() {
 }
 export default Home
 
-// export async function getServerSideProps(){
-//   const allprices = await prisma.token_info.findMany();
-//
-//   return {
-//     props: allprices
-//   };
-// }
+export async function getStaticProps() {
+  const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=drip-network%2C%20pig-finance%2C%20doggy-swap%2C%20revolution%2C%20grimtoken&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h`)
+  const data = await res.json()
+
+  let price_data = []
+
+  for(let i = 0; i < data.length; i++){
+
+    let token_info = {}
+
+    token_info['name'] = data[i].symbol;
+    token_info['price'] = data[i].current_price;
+    token_info['price_change'] = data[i].price_change_percentage_24h_in_currency.toFixed(2);
+
+    price_data.push(token_info)
+  }
+
+  return {
+    props: { price_data },
+  }
+}

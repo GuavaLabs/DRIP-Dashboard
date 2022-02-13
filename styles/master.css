@@ -1,8 +1,19 @@
-.maincontainer{
+.header-main{
+
+}
+
+.main-container{
   display: grid;
   gap: 1rem;
   grid-template-columns: auto;
   grid-template-rows: auto;
+
+  justify-items: center;
+
+  /*
+  background-image: url('../public/waterbg1.png');
+  background-size: cover;
+  */
 }
 
 
@@ -12,18 +23,67 @@
   padding: 1rem;
 
   border: 1px solid black;
+  background-color: #030303;
+
+  /* Fixed Lengths for Now */
+  width: 211px;
+  height: 165px;
 }
+
+.header-h1{
+  color: white;
+  font-size: 2rem;
+}
+
 
 .token-name{
   color: #53B9EA;
+  margin-top: 0px;
+  text-transform: uppercase;
 }
 
 .token-percent{
   margin: 0px;
+  margin-left: auto;
   color: lightgreen;
 }
+
+.negative{
+  color: red;
+}
+
+.token-price{
+  color: white;
+}
+
+.token-price > h2 {
+  color: white;
+}
+
+.light-price-background{
+  background: #53B9EA;
+  mix-blend-mode: normal;
+  opacity: 0.15;
+
+  border-radius: 10px;
+}
+
+
 
 .box-row{
   display: flex;
   flex-direction: row;
+
+  flex-wrap: wrap;
+
+  gap: .5rem;
+}
+
+
+.box-column{
+  display: flex;
+  flex-direction: column;
+
+  flex-wrap: wrap;
+
 }
