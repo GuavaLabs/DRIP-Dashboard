@@ -13,3 +13,6 @@ Source repo for Aleph Dashboard, made using React+Next.js
 * Added logic to create a Price component for each object
   returned by API
 * Added simple styling
+
+## Changelog 1.3
+* Changed API call for prices (Now pulls from CMC only| Note: Requires dev_key to function!)

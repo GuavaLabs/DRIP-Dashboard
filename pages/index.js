@@ -19,7 +19,7 @@ function Home({price_data}) {
           <h1>Token Prices</h1>
         </div>
         <div  className="box-row">
-          {price_data.map(token_info => (<Price token_info={token_info} />))}
+          {price_data.map(token_info => (<Price token_info={token_info} key={token_info.id}/>))}
         </div>
       </section>
       {/* Section 2 -  DAO Member Breakdown */}
@@ -56,20 +56,42 @@ function Home({price_data}) {
 }
 export default Home
 
+// getStaticProps makes this call ON BUILD, which means that the prices will stay static regardless of how many requests made.
+// In the future, this will be changed by a script which will make requests every 4-6 hours and upload them to a db, from which
+// this application will pull from on each (or for each) request.
 export async function getStaticProps() {
-  const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=drip-network%2C%20pig-finance%2C%20doggy-swap%2C%20revolution%2C%20grimtoken&order=market_cap_desc&per_page=100&page=1&sparkline=false&price_change_percentage=24h`)
+
+  // Prop Array
+  let price_data = []
+  // PIGS, DOGS, DRIP, GRIM, REV
+  const keys = ['17965', '17966', '11093', '11363', '17172']
+
+  // id=KEY,KEY,KEY,KEY | This could probably be concated automatically in a for loop, but that would be slower
+  let cmc_url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=17965,17966,11093,11363,17172'
+
+  // Request will fail if you do not include the dev_key
+  const dev_key = 'PUT DEV KEY HERE'
+
+  // Headers passed in the GET request
+  let headers = {'Accepts': 'application/ecmascript', 'X-CMC_PRO_API_KEY': dev_key, 'Accept-Encoding':'deflate, gzip'}
+
+  const res = await fetch(cmc_url, { headers });
   const data = await res.json()
 
-  let price_data = []
-
-  for(let i = 0; i < data.length; i++){
-
+  for(let x = 0; x < keys.length; x++){
     let token_info = {}
 
-    token_info['name'] = data[i].symbol;
-    token_info['price'] = data[i].current_price;
-    token_info['price_change'] = data[i].price_change_percentage_24h_in_currency.toFixed(2);
+    token_info['id'] = x
+    token_info['name'] = data.data[keys[x]].symbol
 
+    // Round the Numbers
+    token_info['price'] = data.data[keys[x]].quote['USD'].price.toFixed(2)
+
+    token_info['price_change'] = data.data[keys[x]].quote['USD'].percent_change_24h.toFixed(2);
+
+    console.log(token_info)
+
+    // Push token_info object into Prop Array
     price_data.push(token_info)
   }
 
