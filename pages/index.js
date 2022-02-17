@@ -71,7 +71,7 @@ export async function getStaticProps() {
   let cmc_url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=17965,17966,11093,11363,17172'
 
   // Request will fail if you do not include the dev_key
-  const dev_key = 'a48f5912-3793-4aa5-8efa-3c0b9bd96ea2'
+  const dev_key = '##API KEY GOES HERE##'
 
   // Headers passed in the GET request
   let headers = {'Accepts': 'application/ecmascript', 'X-CMC_PRO_API_KEY': dev_key, 'Accept-Encoding':'deflate, gzip'}
