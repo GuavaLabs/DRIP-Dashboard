@@ -11,14 +11,15 @@ function Home({price_data}) {
 
   return (
     <div  className="main-container">
+      <h1 className="glow-title">Syndicate Dashboard</h1>
       {/* Header is in _app.js*/}
 
       {/* Section 1 - Prices */}
       <section  className="box-column">
         <div  className="header-h1">
-          <h1>Token Prices</h1>
+          <h1 className="glow-header">Token Prices</h1>
         </div>
-        <div  className="box-row">
+        <div  className="box-row panel-frame">
           {price_data.map(token_info => (<Price token_info={token_info} key={token_info.id}/>))}
         </div>
       </section>
@@ -70,7 +71,7 @@ export async function getStaticProps() {
   let cmc_url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=17965,17966,11093,11363,17172'
 
   // Request will fail if you do not include the dev_key
-  const dev_key = 'PUT DEV KEY HERE'
+  const dev_key = 'a48f5912-3793-4aa5-8efa-3c0b9bd96ea2'
 
   // Headers passed in the GET request
   let headers = {'Accepts': 'application/ecmascript', 'X-CMC_PRO_API_KEY': dev_key, 'Accept-Encoding':'deflate, gzip'}
