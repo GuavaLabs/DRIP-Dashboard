@@ -16,3 +16,8 @@ Source repo for Aleph Dashboard, made using React+Next.js
 
 ## Changelog 1.3
 * Changed API call for prices (Now pulls from CMC only| Note: Requires dev_key to function!)
+
+## Changelog 1.4
+* Added icons
+* Added logic to pass icon to Image depending on token_info.name
+* Updated styling, made prices section into grid

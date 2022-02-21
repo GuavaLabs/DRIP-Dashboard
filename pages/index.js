@@ -11,7 +11,9 @@ function Home({price_data}) {
 
   return (
     <div  className="main-container">
-      <h1 className="glow-title">Syndicate Dashboard</h1>
+      <section className="box-row">
+        <h1 className="glow-title main">Drip Syndicate Dashboard</h1>
+      </section>
       {/* Header is in _app.js*/}
 
       {/* Section 1 - Prices */}
@@ -19,12 +21,15 @@ function Home({price_data}) {
         <div  className="header-h1">
           <h1 className="glow-header">Token Prices</h1>
         </div>
-        <div  className="box-row panel-frame">
+        <div  className="grid-panel-neo">
           {price_data.map(token_info => (<Price token_info={token_info} key={token_info.id}/>))}
         </div>
       </section>
       {/* Section 2 -  DAO Member Breakdown */}
-      <section  className="">
+      <section  className="box-column">
+        <div  className="header-h1">
+          <h1 className="glow-header">R34P DAO Stats</h1>
+        </div>
       </section>
       {/* Section 3 -  BR34P Token, Reqs with Citadel */}
       <section  className="">
@@ -64,8 +69,9 @@ export async function getStaticProps() {
 
   // Prop Array
   let price_data = []
-  // PIGS, DOGS, DRIP, GRIM, REV
-  const keys = ['17965', '17966', '11093', '11363', '17172']
+
+  // DRIP, PIGS, DOGS, REV, GRIM
+  const keys = ['11093', '17966', '17965', '17172', '11363']
 
   // id=KEY,KEY,KEY,KEY | This could probably be concated automatically in a for loop, but that would be slower
   let cmc_url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=17965,17966,11093,11363,17172'
