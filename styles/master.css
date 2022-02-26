@@ -8,12 +8,6 @@
   grid-template-columns: auto;
   grid-template-rows: auto;
 
-  justify-items: center;
-
-  /*
-  background-image: url('../public/waterbg1.png');
-  background-size: cover;
-  */
 }
 
 .glow-title{

@@ -8,27 +8,19 @@ body {
 
   background-image: url('../public/waterbg1.png');
   background-size: cover;
-
-  /*background-repeat: no-repeat;*/
-  /*mix-blend-mode: overlay;*/
-  /*filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));*/
 }
 
+/* Main Wrapper*/
+.wrapper{
+  display: grid;
+  gap: 1rem;
+}
 
+/* Section 1 Pricing Grid */
 .grid-panel-neo{
 
-
-  /*width: 80%;*/
-  max-width: 874px;
-
   display: grid;
-  /*
-  grid-template-columns: auto auto auto;
-  200
-  */
-  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-  /*grid-template-rows: auto auto;*/
-  grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
 
   gap: 1rem;
   grid-auto-flow: dense;
@@ -36,7 +28,15 @@ body {
   padding: 1rem;
 
   background: rgba(52, 174, 237, 0.28);
-  /*border: 3px solid #000000;*/
   box-sizing: border-box;
   border-radius: 10px;
+
+  grid-template-rows: 200px 200px;
+  width: 100%;
 }
+
+.price-dashboard{
+  padding: 2rem;
+}
+
+/* Section 2 */

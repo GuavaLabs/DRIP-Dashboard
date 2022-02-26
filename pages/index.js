@@ -17,7 +17,7 @@ function Home({price_data}) {
       {/* Header is in _app.js*/}
 
       {/* Section 1 - Prices */}
-      <section  className="box-column">
+      <section  className="box-column price-dashboard">
         <div  className="header-h1">
           <h1 className="glow-header">Token Prices</h1>
         </div>
@@ -31,32 +31,6 @@ function Home({price_data}) {
           <h1 className="glow-header">R34P DAO Stats</h1>
         </div>
       </section>
-      {/* Section 3 -  BR34P Token, Reqs with Citadel */}
-      <section  className="">
-      </section>
-      {/* Section 4 -  DRIP with wallets, max payout, and tax rate */}
-      <section  className="">
-      </section>
-      {/* Section 5 -  DRIP holders with info */}
-      <section  className="">
-      </section>
-      {/* Section 6 -  Breakdown of NDV with indicators */}
-      <section  className="">
-      </section>
-      {/* Section 7 -  Show Deadwallets w/t Health */}
-      <section  className="">
-      </section>
-      {/* Section 8 -  Reward Wallet Payouts */}
-      <section  className="">
-      </section>
-      {/* Section 9 - TBD (MAXIMUM Runway Time)*/}
-      <section  className="">
-      </section>
-      {/* Section 10 -  DCA Goal Calculator */}
-      <section  className="">
-      </section>
-      <footer className="">
-      </footer>
     </div>
   )
 }
@@ -77,7 +51,7 @@ export async function getStaticProps() {
   let cmc_url = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=17965,17966,11093,11363,17172'
 
   // Request will fail if you do not include the dev_key
-  const dev_key = 'API KEY GO HERE'
+  const dev_key = 'a48f5912-3793-4aa5-8efa-3c0b9bd96ea2'
 
   // Headers passed in the GET request
   let headers = {'Accepts': 'application/ecmascript', 'X-CMC_PRO_API_KEY': dev_key, 'Accept-Encoding':'deflate, gzip'}
