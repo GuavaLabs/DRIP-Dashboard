@@ -21,7 +21,7 @@ function Home({price_data}) {
       {/* Header is in _app.js*/}
 
       {/* Section 1 - Prices */}
-      <section  className="box-column">
+      <section  className="box-column price-dashboard">
         <div  className="header-h1">
           <h1 className="glow-header">Token Prices</h1>
         </div>
@@ -62,6 +62,7 @@ function Home({price_data}) {
       </section>
       <footer className="">
       </footer>
+
     </div>
   )
 }

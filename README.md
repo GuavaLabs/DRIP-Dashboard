@@ -21,3 +21,6 @@ Source repo for Aleph Dashboard, made using React+Next.js
 * Added icons
 * Added logic to pass icon to Image depending on token_info.name
 * Updated styling, made prices section into grid
+
+## Changelog 1.5
+* Fixed Pricing Grid, added responsiveness
