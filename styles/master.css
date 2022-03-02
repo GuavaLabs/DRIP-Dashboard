@@ -26,6 +26,27 @@
   margin: 15px 0;
 }
 
+.sidebar{
+  position: absolute;
+  width: 300px;
+  height: 1024px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(180deg, rgba(52, 174, 237, 0.28) 0%, rgba(27, 25, 66, 0.85) 57.44%, #17163B 100%);
+}
+
+/* drip guy */
+
+.drip-guy{
+  position: absolute;
+  width: 141px;
+  height: 175px;
+  left: 85px;
+  top: 15px;
+  background: url(../public/drip-guy.png);
+}
+
+
 .glow-header{
   /*font-family: Aquino;*/
   font-size: 2.2rem;
